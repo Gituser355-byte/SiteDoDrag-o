@@ -1,0 +1,169 @@
+    <!DOCTYPE html>
+    <html lang="pt-BR">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Gazeta do Reino</title>
+      <style>
+        body {
+          background: #f4ecd8 ;
+          font-family: 'Garamond', serif;
+          color: #3e2c1c;
+          margin: 0;
+          padding: 0;
+        }
+
+        .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: center; 
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .header-content h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    #logo {
+      width: 60px;
+      height: auto;
+      margin: 0;
+      transition: opacity 0.2s;
+    }
+
+
+        nav {
+          background-color: #c2a97c;
+          display: flex;
+          justify-content: center;
+          gap: 30px;
+          padding: 10px 0;
+          font-weight: bold;
+        }
+
+        nav a {
+          color: #3e2c1c;
+          text-decoration: none;
+          transition: color 0.3s;
+        }
+
+        nav a:hover {
+          color: #fff8e7;
+        }
+
+        .container {
+          padding: 20px;
+          max-width: 1000px;
+          margin: auto;
+        }
+
+        .noticia, .noticia1, .noticia2 {
+          background: #fff7e1;
+          border: 2px solid #d4ba8c;
+          padding: 20px;
+          margin-bottom: 20px;
+          border-radius: 8px;
+          box-shadow: 4px 4px 0 #a67c52;
+          padding-bottom: 20px;
+          transition: transform 0.3s, background 0.3s;
+        }
+
+        .noticia:hover, .noticia1:hover, .noticia2:hover{
+          cursor: pointer;
+          transform: scale(1.05);
+          background: #fff2ce;
+          border: 2px solid #d4ba8c;
+          padding: 20px;
+          margin-bottom: 20px;
+          border-radius: 8px;
+          box-shadow: 4px 4px 0 #a67c52;
+          padding-bottom: 20px;
+        }
+
+        .noticia .noticia1 .noticia2 h2 {
+          margin-top: 0;
+          font-size: 1.5rem;
+          color: #5c3b1e;
+        }
+
+        .noticia .noticia1 .noticia2 p {
+          font-size: 1.1rem;
+        }
+
+        footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: #a67c52;
+      color: #fff8e7;
+      text-align: center;
+      padding: 10px;
+      border-top: 4px solid #5c3b1e;
+      z-index: 1000;
+      }
+
+      </style>
+    </head>
+    <body>
+      <header>
+        <div class="header-content">
+          <img id="logo" src="logo1.png" alt="Logo Dragão" />
+          <h1>Gazeta do Reino - Notícias</h1>
+        </div>
+      </header>
+      
+
+      <nav>
+        <a href="SieDodragao.html">Início</a>
+        <a href="reinos.html">Reinos</a>
+        <a href="Bestiario.html">Bestiário</a>
+        <a href="login.html">Login</a>
+      </nav>
+
+      <div class="container">
+        <div class="noticia" onclick="location.href='Not1.html'" >
+          <h2>Dragão Ancião avistado próximo à Montanha Cinzenta!</h2>
+          <p>Moradores da vila de Norrum relatam terem visto um brilho vermelho intenso nos céus...</p>
+        </div>
+      </div>
+
+      <div class="container">
+       <div class="noticia1" onclick="location.href='Not2.html'" >
+          <h2>Grupo de Orc´s avistado a 3Km de Youthonhain!</h2>
+          <p>Um grupo de orcs foi avistado a poucos quilômetros da cidade de Youthonhain, causando alvoroço entre os moradores...</p>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="noticia1" onclick="location.href='Not3.html'" >
+          <h2>Escudos contrabandeados são recuperados!</h2>
+          <p>Um carregamento de escudos contrabandeados foi recuperado pelas autoridades do reino, reforçando a segurança das fronteiras...</p>
+        </div>
+      </div>
+
+      
+
+      <footer>
+        &copy; 1525 - Gazeta do Reino | Feito por escribas da Torre de Etherion
+      </footer>
+
+      <script>
+        window.addEventListener("load", () => {
+          const logo = document.getElementById("logo");
+          const frames = ["logo1.png", "logo2.png", "logo3.png", "logo4.png", "logo1.png"];
+          let i = 0;
+
+          const interval = setInterval(() => {
+            logo.src = frames[i];
+            i++;
+            if (i >= frames.length) {
+              clearInterval(interval);
+            }
+          }, 100);
+        });
+      </script>
+    </body>
+    </html>

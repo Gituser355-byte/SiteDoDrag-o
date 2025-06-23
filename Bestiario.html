@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bestiário - Gazeta do Reino</title>
+  <style>
+          body {
+          background: #f4ecd8 ;
+          font-family: 'Garamond', serif;
+          color: #3e2c1c;
+          margin: 0;
+          padding: 0;
+        }
+
+        .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: center; 
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .header-content h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    #logo {
+      width: 60px;
+      height: auto;
+      margin: 0;
+      transition: opacity 0.2s;
+    }
+
+
+        nav {
+          background-color: #c2a97c;
+          display: flex;
+          justify-content: center;
+          gap: 30px;
+          padding: 10px 0;
+          font-weight: bold;
+        }
+
+        nav a {
+          color: #3e2c1c;
+          text-decoration: none;
+          transition: color 0.3s;
+        }
+
+        nav a:hover {
+          color: #fff8e7;
+        }
+
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: #a67c52;
+      color: #fff8e7;
+      text-align: center;
+      padding: 10px;
+      border-top: 4px solid #5c3b1e;
+      z-index: 1000;
+    }
+
+    .carousel {
+      position: relative;
+      max-width: 500px;
+      margin: 60px auto;
+      overflow: hidden;
+      background: #fff7e1;
+      border: 4px solid #bfa046;
+      border-radius: 12px;
+      box-shadow: 0 0 20px #bfa046;
+    }
+
+    .slides {
+      display: flex;
+      transition: transform 0.5s;
+    }
+
+    .slides :hover {
+      cursor: pointer;
+      transform: scale(1.07);
+      transition: transform 0.3s;
+    }
+
+    .slide {
+      display: none;
+      width: 100%;
+      height: 300px;
+      object-fit: contain;
+      background: #fffbe6;
+    }
+
+    .slide.active {
+      display: block;
+    }
+
+    .prev, .next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #bfa046;
+      color: #fff;
+      border: none;
+      padding: 10px 16px;
+      cursor: pointer;
+      border-radius: 50%;
+      font-size: 24px;
+      z-index: 2;
+    }
+
+    .prev { left: 10px; }
+    .next { right: 10px; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-content">
+      <img id="logo" src="logo1.png" alt="Logo Dragão" />
+      <h1>Gazeta do Reino - Bestiário das Criaturas</h1>
+    </div>
+  </header>
+
+  <nav>
+    <a href="SieDodragao.html">Início</a>
+    <a href="reinos.html">Reinos</a>
+    <a href="Bestiario.html">Bestiário</a>
+    <a href="login.html">Login</a>
+  </nav>
+
+  <div class="carousel">
+    <div class="slides">
+      <img src="unnamed-removebg-preview.png" class="slide active" alt="Criatura 1" />
+      <img src="unnamed-removebg-preview2.png" class="slide" alt="Criatura 2" />
+      <img src="unnamed-removebg-preview3.png" class="slide" alt="Criatura 3" />
+      <img src="unnamed-removebg-preview4.png" class="slide" alt="Criatura 4" />
+      <img src="unnamed-removebg-preview5.png" class="slide" alt="Criatura 5" />
+
+    </div>
+    <button class="prev" onclick="mudarSlide(-1)">❮</button>
+    <button class="next" onclick="mudarSlide(1)">❯</button>
+  </div>
+
+  <footer>
+    &copy; 1525 - Gazeta do Reino | Feito por escribas da Torre de Etherion
+  </footer>
+
+  <script>
+
+    window.addEventListener("load", () => {
+      const logo = document.getElementById("logo");
+      const frames = ["logo1.png", "logo2.png", "logo3.png", "logo4.png", "logo1.png"];
+      let i = 0;
+
+      const interval = setInterval(() => {
+        logo.src = frames[i];
+        i++;
+        if (i >= frames.length) {
+          clearInterval(interval);
+        }
+      }, 100);
+    });
+
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+
+    function showSlide(index) {
+      slides[currentSlide].classList.remove('active');
+      currentSlide = (index + slides.length) % slides.length;
+      slides[currentSlide].classList.add('active');
+    }
+
+    function mudarSlide(direction) {
+      showSlide(currentSlide + direction);
+    }
+  </script>
+
+</body>
+</html>

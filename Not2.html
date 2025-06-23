@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gazeta do Reino</title>
+  <style>
+    body {
+      background: #f4ecd8 ;
+      font-family: 'Garamond', serif;
+      color: #3e2c1c;
+      margin: 0;
+      padding: 0;
+      padding-bottom: 35px;
+    }
+
+    .header-content {
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.header-content h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+#logo {
+  width: 60px;
+  height: auto;
+  margin: 0;
+  transition: opacity 0.2s;
+}
+
+
+    nav {
+      background-color: #c2a97c;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 10px 0;
+      font-weight: bold;
+    }
+
+    nav a {
+      color: #3e2c1c;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #fff8e7;
+    }
+
+      section {
+      max-width: 1000px;
+      max-height:1000px;
+      border: 3.5px solid #d4ba8c;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff7e1;
+      border-radius: 8px;
+      box-shadow: 4px 4px 0 #a67c52;
+    }
+
+    .noticia h2 {
+      margin-top: 0;
+      font-size: 1.5rem;
+      color: #5c3b1e;
+      padding-bottom: 15px;
+    }
+
+    .noticia p {
+      font-size: 1.1rem;
+      padding-bottom: 25px;
+    }
+
+    .noticia img {
+      border: 2.5px solid #d4ba8c;
+      max-width: 50%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 3px 3px 0 #a67c52;
+    }
+
+    .noticia .seg {
+     padding-top: 10px;
+     padding-bottom: 5px;
+    }
+
+    footer {
+   position: fixed;
+   bottom: 0;
+   left: 0;
+   width: 100%;
+   background-color: #a67c52;
+   color: #fff8e7;
+   text-align: center;
+   padding: 10px;
+   border-top: 4px solid #5c3b1e;
+   z-index: 1000;
+   height: 20px;
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <img id="logo" src="logo1.png" alt="Logo Dragão" />
+      <h1>Gazeta do Reino - Notícias</h1>
+    </div>
+  </header>
+  
+
+  <nav>
+    <a href="SieDodragao.html">Início</a>
+    <a href="reinos.html">Reinos</a>
+    <a href="Bestiario.html">Bestiário</a>
+    <a href="login.html">Login</a>
+  </nav>
+
+   <section>
+    <div class="noticia">
+      <h2>Grupo de Orc´s avistado a 3Km de Youthonhain!</h2>
+      <p id="esp">Um grupo de orcs foi avistado a poucos quilômetros da cidade de Youthonhain, causando alvoroço entre os moradores...</p>
+      <p>Moradores da vila de Norrum relatam terem visto um brilho vermelho intenso nos céus, acreditando ser um sinal de que a Era dos Dragões está repleta de mistérios e aventuras esperando para serem desvendados!</p>
+      <p>Se você tiver alguma informação ou avistamento, entre em contato com a Gazeta do Reino através de nossos mensageiros. Sua contribuição é vital para a segurança de todos os reinos!</p>
+      <p>Fique atento às próximas edições para mais detalhes sobre esta intrigante notícia. A Era dos Dragões está repleta de mistérios e aventuras esperando para serem desvendados!</p>
+       <p>
+        <img src="Grupodeorcs.png" alt="Grupo de Orc´s"><br>
+       <div class="seg"><strong>Por Escriba da Torre de Etherion</strong>
+        <br>
+        <em>Publicada em 15 de Fevereiro de 1525</em>
+        </div>
+    </div>
+    </section>
+
+  <footer>
+    &copy; 1525 - Gazeta do Reino | Feito por escribas da Torre de Etherion
+  </footer>
+
+  <script>
+    window.addEventListener("load", () => {
+      const logo = document.getElementById("logo");
+      const frames = ["logo1.png", "logo2.png", "logo3.png", "logo4.png", "logo1.png"];
+      let i = 0;
+
+      const interval = setInterval(() => {
+        logo.src = frames[i];
+        i++;
+        if (i >= frames.length) {
+          clearInterval(interval);
+        }
+      }, 100);
+    });
+  </script>
+</body>
+</html>

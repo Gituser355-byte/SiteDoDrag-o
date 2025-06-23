@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reinos - Gazeta do Reino</title>
+  <style>
+         body {
+          background: #f4ecd8 ;
+          font-family: 'Garamond', serif;
+          color: #3e2c1c;
+          margin: 0;
+          padding: 0;
+        }
+
+        .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: center; 
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .header-content h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    #logo {
+      width: 60px;
+      height: auto;
+      margin: 0;
+      transition: opacity 0.2s;
+    }
+
+
+        nav {
+          background-color: #c2a97c;
+          display: flex;
+          justify-content: center;
+          gap: 30px;
+          padding: 10px 0;
+          font-weight: bold;
+        }
+
+        nav a {
+          color: #3e2c1c;
+          text-decoration: none;
+          transition: color 0.3s;
+        }
+
+        nav a:hover {
+          color: #fff8e7;
+        }
+
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: #a67c52;
+      color: #fff8e7;
+      text-align: center;
+      padding: 10px;
+      border-top: 4px solid #5c3b1e;
+      z-index: 1000;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 40px auto 100px;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 30px;
+      color: #5c3b1e;
+    }
+
+    .map-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .map-item {
+      background: #fff7e1;
+      border: 2px solid #d4ba8c;
+      border-radius: 8px;
+      width: 250px;
+      box-shadow: 4px 4px 0 #a67c52;
+      transition: transform 0.3s, background 0.3s;
+      cursor: pointer;
+      text-align: center;
+      padding: 10px;
+    }
+
+    .map-item:hover {
+      background: #fff2ce;
+      transform: scale(1.05);
+    }
+
+    .map-item img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+
+    .map-item h3 {
+      margin: 0;
+      font-size: 1.3rem;
+      color: #3e2c1c;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      padding-top: 60px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.7);
+    }
+
+    .modal-content {
+      margin: auto;
+      display: block;
+      max-width: 80%;
+      border: 4px solid #bfa046;
+      border-radius: 12px;
+      box-shadow: 0 0 20px #bfa046;
+    }
+
+    .modal-content:hover {
+      box-shadow: 0 0 30px #fff2ce;
+    }
+
+    .close {
+      position: absolute;
+      top: 30px;
+      right: 50px;
+      color: #fff8e7;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close:hover {
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <img id="logo" src="logo1.png" alt="Logo Dragão" />
+      <h1>Gazeta do Reino - Mapa dos Reinos</h1>
+    </div>
+  </header>
+
+  <nav>
+    <a href="SieDodragao.html">Início</a>
+    <a href="reinos.html">Reinos</a>
+    <a href="Bestiario.html">Bestiário</a>
+        <a href="login.html">Login</a>
+  </nav>
+
+  <div class="container">
+    <h2>Reinos em dominio de OZ</h2>
+    <div class="map-grid">
+      <div class="map-item" onclick="abrirImagem('mapa-reino1.png')">
+        <img src="mapa-reino1.png" alt="Mapa do Reino do Norte" />
+        <h3>Reino do Norte</h3>
+      </div>
+      <div class="map-item" onclick="abrirImagem('mapa-reino2.png')">
+        <img src="mapa-reino2.png" alt="Mapa do Reino do Deserto" />
+        <h3>Reino do Deserto</h3>
+      </div>
+      <div class="map-item" onclick="abrirImagem('mapa-reino3.png')">
+        <img src="mapa-reino3.png" alt="Mapa do Reino das Montanhas" />
+        <h3>Reino das Montanhas</h3>
+      </div>
+      <div class="map-item" onclick="abrirImagem('mapa-reino4.png')">
+        <img src="mapa-reino4.png" alt="Mapa do Reino Submerso" />
+        <h3>Reino Submerso</h3>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal" class="modal" onclick="fecharModal()">
+    <span class="close" onclick="fecharModal()">&times;</span>
+    <img class="modal-content" id="imgModal" />
+  </div>
+
+  <footer>
+    &copy; 1525 - Gazeta do Reino | Feito por escribas da Torre de Etherion
+  </footer>
+
+  <script>
+
+    window.addEventListener("load", () => {
+      const logo = document.getElementById("logo");
+      const frames = ["logo1.png", "logo2.png", "logo3.png", "logo4.png", "logo1.png"];
+      let i = 0;
+      const interval = setInterval(() => {
+        logo.src = frames[i];
+        i++;
+        if (i >= frames.length) clearInterval(interval);
+      }, 100);
+    });
+
+    function abrirImagem(src) {
+      const modal = document.getElementById("modal");
+      const img = document.getElementById("imgModal");
+      img.src = src;
+      modal.style.display = "block";
+    }
+
+    function fecharModal() {
+      document.getElementById("modal").style.display = "none";
+    }
+  </script>
+</body>
+</html>
